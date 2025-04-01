@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shoegaze Machine – Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #d1c4e9, #f8bbd0); /* periwinkle-magenta */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    label, input {
+      font-size: 1.1rem;
+    }
+
+    .controls {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    input[type=range] {
+      width: 300px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #7e57c2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #9575cd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Shoegaze Machine (Prototype)</h1>
+  <div class="controls">
+    <label for="delayTime">Delay Time</label><br>
+    <input type="range" id="delayTime" min="0" max="1" step="0.01" value="0.5">
+    <br>
+    <button id="start">Start Audio</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

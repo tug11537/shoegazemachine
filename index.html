@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Shoegaze Machine – Prototype</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -66,10 +67,8 @@
       margin: 0 auto 20px;
     }
   </style>
-
-  <script src="https://unpkg.com/tone@14.8.39/build/Tone.js"></script>
-  <script src="https://unpkg.com/nexusui@2.0.10/dist/NexusUI.js"></script>
 </head>
+
 <body>
   <!-- Ambient Visualizer Canvas -->
   <canvas id="visualizer"></canvas>
@@ -88,5 +87,30 @@
   </div>
 
   <!-- Reverb Controls -->
-  <div class="
+  <div class="controls" id="reverb-controls">
+    <label for="decayKnob">Reverb Decay</label>
+    <div id="decayKnob" class="knob"></div>
+
+    <label for="preDelayKnob">Pre-Delay</label>
+    <div id="preDelayKnob" class="knob"></div>
+
+    <label for="wetKnob">Wet Mix</label>
+    <div id="wetKnob" class="knob"></div>
+  </div>
+
+  <!-- Filter + Distortion Controls -->
+  <div class="controls" id="filter-distortion-controls">
+    <label for="filterFreqKnob">Filter Frequency</label>
+    <div id="filterFreqKnob" class="knob"></div>
+
+    <label for="distortionKnob">Distortion</label>
+    <div id="distortionKnob" class="knob"></div>
+  </div>
+
+  <!-- External Scripts (load last so everything is in the DOM) -->
+  <script src="https://unpkg.com/tone@14.8.39/build/Tone.js"></script>
+  <script src="https://unpkg.com/nexusui@2.0.10/dist/NexusUI.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
 

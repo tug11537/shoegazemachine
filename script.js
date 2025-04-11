@@ -12,28 +12,33 @@ function makeDistortionCurve(amount = 400) {
   return curve;
 }
 
-function setupVisualizer(audioCtx, sourceNode) {
+function setupVisualizer(audioCtx, streamSource) {
   analyser = audioCtx.createAnalyser();
   analyser.fftSize = 512;
 
-  sourceNode.connect(analyser);
+  streamSource.connect(analyser);
 
   visualizerCanvas = document.getElementById('visualizer');
   visualizerCanvas.width = window.innerWidth;
   visualizerCanvas.height = window.innerHeight;
   canvasCtx = visualizerCanvas.getContext('2d');
 
-  animateVisualizer();
+ animateVisualizer();
 }
 
 function animateVisualizer() {
   requestAnimationFrame(animateVisualizer);
 
+  if (!canvasCtx || !analyser) {
+    return;
+  }
+
+
   const bufferLength = analyser.frequencyBinCount;
   const dataArray = new Uint8Array(bufferLength);
   analyser.getByteFrequencyData(dataArray);
 
-  const average = dataArray.reduce((a, b) => a + b) / bufferLength;
+  const average = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
 
   canvasCtx.fillStyle = 'rgba(240, 220, 250, 0.05)';
   canvasCtx.fillRect(0, 0, visualizerCanvas.width, visualizerCanvas.height);
@@ -43,14 +48,15 @@ function animateVisualizer() {
   const centerY = visualizerCanvas.height / 2;
 
   const gradient = canvasCtx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
-  gradient.addColorStop(0, `rgba(200, 100, 255, 0.6)`);
-  gradient.addColorStop(1, `rgba(250, 200, 255, 0)`);
+  gradient.addColorStop(0, 'rgba(200, 100, 255, 0.6)');
+  gradient.addColorStop(1, 'rgba(250, 200, 255, 0)');
 
   canvasCtx.beginPath();
   canvasCtx.arc(centerX, centerY, radius, 0, Math.PI * 2);
   canvasCtx.fillStyle = gradient;
   canvasCtx.fill();
 }
+
 
 window.onload = () => {
   const delayTimeKnob = new Nexus.Dial('#delayTimeKnob', {

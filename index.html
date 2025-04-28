@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Shoegaze Machine – Prototype</title>
+  <title>Shoegaze Machine</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -17,7 +17,6 @@
       min-height: 100vh;
       color: #333;
     }
-
     canvas#visualizer {
       position: fixed;
       top: 0;
@@ -27,12 +26,10 @@
       height: 100%;
       background: hotpink;
     }
-
     h1 {
       margin-bottom: 20px;
       font-size: 2rem;
     }
-
     .controls {
       background: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(6px);
@@ -42,13 +39,11 @@
       text-align: center;
       margin: 20px 0;
     }
-
     label {
       display: block;
       margin: 15px 0 5px;
       font-size: 1.1rem;
     }
-
     button {
       margin-top: 25px;
       padding: 10px 20px;
@@ -59,11 +54,9 @@
       border-radius: 8px;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #9575cd;
     }
-
     .knob {
       margin: 0 auto 20px;
     }
@@ -74,8 +67,20 @@
   <!-- Ambient Visualizer Canvas -->
   <canvas id="visualizer"></canvas>
 
-  <h1>Shoegaze Machine (Prototype)</h1>
+  <h1>Shoegaze Machine</h1>
 
+  <!-- Preset Selection -->
+  <div class="controls" id="preset-controls">
+    <label for="presetSelect">Choose a Preset</label>
+    <select id="presetSelect">
+      <option value="Swirly Pancakes">Swirly Pancakes</option>
+      <option value="Valentine Static">Valentine Static</option>
+      <option value="Fast Cannonball">Fast Cannonball</option>
+      <option value="Heaven Delay">Heaven Delay</option>
+    </select>
+    <button id="loadPresetButton">Load Preset</button>
+  </div>
+  
   <!-- Delay + Feedback Controls -->
   <div class="controls">
     <label for="delayTimeKnob">Delay Time</label>
@@ -107,6 +112,7 @@
     <label for="distortionKnob">Distortion</label>
     <div id="distortionKnob" class="knob"></div>
   </div>
+
 
   <!-- External Scripts -->
   <script src="https://unpkg.com/tone@14.8.39/build/Tone.js"></script>
